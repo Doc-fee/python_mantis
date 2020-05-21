@@ -15,8 +15,8 @@ class SoapHelper:
         except WebFault:
             return False
 
-    def get_projects(self, username, password):
-        client = Client("http://localhost:8080/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
+    def get_projects(self, username, password, url):
+        client = Client("%sapi/soap/mantisconnect.php?wsdl" % url)
         projects = []
         try:
             client_projects = client.service.mc_projects_get_user_accessible(username, password)
